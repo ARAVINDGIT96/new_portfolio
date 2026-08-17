@@ -9,7 +9,7 @@ body {
     min-height: 100vh;
     padding: 25px;
 
-    background-image: url("../assets/bg.jpg");
+    background-image: url("assets/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -246,7 +246,7 @@ footer {
 .contact-page {
     min-height: 100vh;
 
-    background-image: url("../assets/bg.jpg");
+    background-image: url("assets/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

@@ -25,6 +25,28 @@ app.get("/", (req, res) => {
     res.send("Backend is running");
 });
 
+// Check Database Connection
+async function checkDatabaseConnection() {
+    try {
+
+        const connection = await db.getConnection();
+
+        console.log("Database connected successfully.");
+
+        connection.release();
+
+    } catch (error) {
+
+        console.error("Database connection failed.");
+        console.error("Error:", error.message);
+
+    }
+}
+
+// Test API
+app.get("/", (req, res) => {
+    res.send("Backend is running");
+});
 
 // Contact API
 app.post("/api/contact", async (req, res) => {
