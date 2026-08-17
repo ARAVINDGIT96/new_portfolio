@@ -11,26 +11,25 @@ form.addEventListener("submit", async (event) => {
 
     try {
 
-        const response = await fetch("http://localhost:5000/api/contact", {
+        const response = await fetch(
+            "https://aravindportfolio.onrender.com/api/contact",
+            {
+                method: "POST",
 
-            method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                name,
-                email,
-                phone,
-                message
-            })
-
-        });
-
+                body: JSON.stringify({
+                    name,
+                    email,
+                    phone,
+                    message
+                })
+            }
+        );
 
         const data = await response.json();
-
 
         if (data.success) {
 
