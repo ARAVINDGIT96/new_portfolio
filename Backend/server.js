@@ -5,28 +5,35 @@ require("dotenv").config();
 
 const app = express();
 
+// =========================
 // Middleware
+// =========================
 app.use(cors());
 app.use(express.json());
 
 
-// MySQL connection
+// =========================
+// MySQL Connection
+// =========================
 const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: Number(process.env.DB_PORT) || 3306
+    port: Number(process.env.DB_PORT) || 3306,
+
+    // Connection pool settings
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 
-// Test API
-app.get("/", (req, res) => {
-    res.send("Backend is running");
-});
-
+// =========================
 // Check Database Connection
+// =========================
 async function checkDatabaseConnection() {
+
     try {
 
         const connection = await db.getConnection();
@@ -38,38 +45,57 @@ async function checkDatabaseConnection() {
     } catch (error) {
 
         console.error("Database connection failed.");
-        console.error("Error:", error.message);
+        console.error("Database Error:", error.message);
 
     }
 }
 
+
+// =========================
 // Test API
+// =========================
 app.get("/", (req, res) => {
-    res.send("Backend is running");
+
+    res.status(200).send("Backend is running");
+
 });
 
+
+// =========================
 // Contact API
+// =========================
 app.post("/api/contact", async (req, res) => {
 
     try {
 
-        const { name, email, phone, message } = req.body;
+        const {
+            name,
+            email,
+            phone,
+            message
+        } = req.body;
+
 
         // Validation
         if (!name || !email || !message) {
+
             return res.status(400).json({
                 success: false,
                 message: "Name, email and message are required"
             });
+
         }
 
-        // Insert contact details
+
+        // SQL query
         const sql = `
             INSERT INTO contacts
             (name, email, phone, message)
             VALUES (?, ?, ?, ?)
         `;
 
+
+        // Execute query
         await db.execute(sql, [
             name,
             email,
@@ -77,28 +103,39 @@ app.post("/api/contact", async (req, res) => {
             message
         ]);
 
+
         // Success response
+        console.log("Contact details saved successfully.");
+
         res.status(201).json({
             success: true,
             message: "Contact details saved successfully"
         });
 
+
     } catch (error) {
 
-        console.error("Database Error:", error);
+        console.error("Database Error:", error.message);
 
         res.status(500).json({
             success: false,
             message: "Failed to save contact details"
         });
+
     }
+
 });
 
 
-// Start server
-// Render provides PORT automatically
+// =========================
+// Start Server
+// =========================
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+
     console.log(`Server running on port ${PORT}`);
+
+    await checkDatabaseConnection();
+
 });
