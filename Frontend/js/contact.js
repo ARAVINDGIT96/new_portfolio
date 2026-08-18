@@ -94,7 +94,7 @@ form.addEventListener("submit", async (event) => {
 
     try {
 
-        const response = await fetch("https://portfolio-back-e6r5.onrender.com/api/contact",
+        const response = await fetch("https://aravindportfolio-vd70.onrender.com/api/contact",
             {
                 method: "POST",
 
