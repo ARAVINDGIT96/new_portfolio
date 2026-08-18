@@ -10,10 +10,8 @@ form.addEventListener("submit", async (event) => {
     const message = document.getElementById("message").value.trim();
 
     try {
-
-        const response = await fetch(
-            "https://portfolio-back-e6r5.onrender.com/api/contact",
-            {
+        // const response = await fetch("http://localhost:5000/api/contact", {
+        const response = await fetch("https://portfolio-back-e6r5.onrender.com/api/contact",{
                 method: "POST",
 
                 headers: {
