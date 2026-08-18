@@ -5,18 +5,9 @@ require("dotenv").config();
 
 const app = express();
 
-
-// =================================
-// Middleware
-// =================================
-
 app.use(cors());
 app.use(express.json());
 
-
-// =================================
-// MongoDB Configuration
-// =================================
 
 const mongoURI = process.env.MONGODB_URI;
 
@@ -39,10 +30,7 @@ let db;
 let contacts;
 
 
-// =================================
 // Connect MongoDB
-// =================================
-
 async function connectDatabase() {
 
     try {
@@ -79,10 +67,7 @@ async function connectDatabase() {
 }
 
 
-// =================================
 // Home Route
-// =================================
-
 app.get("/", (req, res) => {
 
     res.status(200).send(
@@ -92,9 +77,7 @@ app.get("/", (req, res) => {
 });
 
 
-// =================================
 // Database Status Route
-// =================================
 
 app.get("/api/db-status", async (req, res) => {
 
@@ -134,9 +117,7 @@ app.get("/api/db-status", async (req, res) => {
 });
 
 
-// =================================
 // Contact API
-// =================================
 
 app.post("/api/contact", async (req, res) => {
 
@@ -220,9 +201,7 @@ app.post("/api/contact", async (req, res) => {
 });
 
 
-// =================================
 // Start Server
-// =================================
 
 const PORT = process.env.PORT;
 
