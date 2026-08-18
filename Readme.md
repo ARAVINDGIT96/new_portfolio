@@ -4,7 +4,7 @@
 
 A full-stack personal portfolio website for **Aravind Sarnala**.
 
-It displays personal information, skills, education, social profiles, resume, and provides a Contact Me form connected to a MySQL database.
+It displays personal information, skills, education, social profiles, resume, and provides a Contact Me form connected to a MongoDB database.
 
 ---
 
@@ -24,9 +24,7 @@ It displays personal information, skills, education, social profiles, resume, an
 
 ### Database
 
-- MySQL Server
-- MySQL Workbench
-- mysql2
+- MongoDB
 
 ### Configuration
 
@@ -37,33 +35,41 @@ It displays personal information, skills, education, social profiles, resume, an
 
 ## 3. Project Structure
 
-```text
-TASK
+````text
+new_portfolio/
 │
-├── assets
-│
-├── Backend
+├── Backend/
 │   ├── .env
 │   ├── package.json
 │   ├── package-lock.json
 │   └── server.js
 │
-├── Frontend
-│   ├── html
-│   │   ├── about.html
-│   │   ├── contact.html
-│   │   ├── education.html
-│   │   └── skill.html
+├── Frontend/
 │   │
-│   ├── js
+│   ├── assets/
+│   │   ├── bg.jpg
+│   │   ├── duolingo.png
+│   │   ├── github.png
+│   │   ├── hackerrank.png
+│   │   ├── image.jpeg
+│   │   ├── leetcode.png
+│   │   ├── linked-in.png
+│   │   ├── resume.jpeg
+│   │   └── resume.png
+│   │
+│   ├── js/
 │   │   └── contact.js
 │   │
+│   ├── about.html
+│   ├── contact.html
+│   ├── education.html
+│   ├── index.html
 │   ├── portfolio.css
-│   └── portfolio.html
+│   └── skill.html
 │
+├── .gitignore
+├── CNAME
 └── README.md
-```
-
 ---
 
 ## 4. Frontend and Backend Run Commands
@@ -74,7 +80,7 @@ Open the terminal in the **backend project folder**:
 
 ```bash
 cd backend
-```
+````
 
 Install the required dependencies:
 
@@ -119,9 +125,9 @@ The frontend will open in the browser.
 ## 5. Complete Execution Flow
 
 ```text
-MySQL Server
+MongoDB Atlas
      ↓
-MySQL Workbench
+MongoDB compass
      ↓
 Backend Terminal
      ↓
@@ -141,5 +147,5 @@ POST Request
      ↓
 Express Backend
      ↓
-MySQL Database
+portfolio Database
 ```
