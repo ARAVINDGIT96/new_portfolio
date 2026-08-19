@@ -9,7 +9,7 @@ body {
     min-height: 100vh;
     padding: 25px;
 
-    background-image: url("../assets/bg.jpg");
+    background-image: url("assets/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -28,6 +28,14 @@ header {
 header h1 {
     font-size: 32px;
     text-shadow: 2px 2px 4px black;
+
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+header h1:hover {
+    color: #00ffff;
+    transform: scale(1.08);
 }
 
 
@@ -73,11 +81,28 @@ nav a:hover {
     font-size: 35px;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px black;
+
+    transition: 0.3s;
+    cursor: pointer;
 }
+
+.name h2:hover {
+    color: #00ffff;
+    transform: scale(1.05);
+}
+
 
 .name h1 {
     font-size: 50px;
     text-shadow: 3px 3px 5px black;
+
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.name h1:hover {
+    color: #00ffff;
+    transform: scale(1.05);
 }
 
 /* Right side */
@@ -91,16 +116,12 @@ nav a:hover {
 }
 
 .i img {
-    width: 400px;
-    height: 400px;
-
+    width: 300px;
+    height: 300px;
     object-fit: cover;
-
-    border-radius: 50%;
-    border: 5px solid white;
-
+    border-radius: 30%;
+    border: 5px solid light gray;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-
     transition: 0.3s;
 }
 
@@ -146,7 +167,6 @@ nav a:hover {
 }
 
 
-
 footer {
     text-align: center;
 
@@ -156,7 +176,16 @@ footer {
     font-size: 14px;
 
     text-shadow: 1px 1px 3px black;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
+
+footer:hover {
+    color: #00ffff;
+    transform: scale(0.9);
+}
+
 
 
 
@@ -246,7 +275,7 @@ footer {
 .contact-page {
     min-height: 100vh;
 
-    background-image: url("../assets/bg.jpg");
+    background-image: url("assets/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -380,8 +409,6 @@ footer {
 }
 
 
-/* Button Hover */
-
 .contact-form button:hover {
 
     background-color: darkgreen;
@@ -389,10 +416,6 @@ footer {
     transform: scale(1.03);
 }
 
-
-/* =====================================================
-   CONTACT PAGE - MOBILE
-   ===================================================== */
 
 @media (max-width: 500px) {
 
